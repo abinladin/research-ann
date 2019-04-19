@@ -28,10 +28,10 @@
 
     \subsection{The Significance of AI and Machine Learning in the Modern World \label{history}}
 
-        It is no secret that Artificial Intelligence is amongst the most prominent fields of Computer Science today. It is well known that the big media and te
-        ch companies collect your browsing data to train AI (Artificial Intelligence) algorithms to serve various purposes. For instance, Netflix uses your viewing history to train an AI to predict what movie or T.V. Series you may be interested in watching and recommend it to you.
+        It is no secret that Artificial Intelligence is among the most prominent fields of Computer Science today. It is also no secret that big media and te
+        ch companies collect your browsing data to train AI (Artificial Intelligence) algorithms to serve various purposes (usually to personalize advertisements to you, the user). For instance, Netflix uses your viewing history to train an AI to predict what movie or T.V. Series you may be interested in watching next.
 
-        An arguably more nefarious example may be in the case of the two online marketing giants, Facebook and Google. At the forefront of A.I. research, Google and Facebook are known to log their users browsing history to use or sell it as training data for Artificial Intelligence Algorithms. The A.I in question is then used to display advertisements to the user that the AI predicts the user would be likely to click on. Both firms have been criticized for their allegedly morally dubious business practices regarding how they respect their users' right to privacy.
+        An arguably more nefarious example may be in the case of the two online marketing giants, Facebook and Google. At the forefront of A.I. research, Facebook and Google are known to log their users browsing history to use or sell it as training data for Artificial Intelligence Algorithms. The A.I in question is then used to display advertisements to the user that the AI predicts the user would be likely to click on. Both firms have been criticized for their allegedly morally dubious business practices regarding how they respect their users' right to privacy. In 2018, Facebook CEO Mark Zuckerberg was required to explain to the U.S. Congress how precisely facebook used their users data. The interview was broadcast live and lasted an entire eight hours.
 
         While the exact artificial neural network algorithm any given media or tech company uses is an extremely closely guarded trade secret - the tech equivalent of Coca Cola's recipe- They all generally the same abstract subcomponents, like how all sodas are some combination of fizzy water, flavouring and color.
 
@@ -138,7 +138,7 @@
         
         % Talk a bit about the history of the sigmoid function in AI, also insert sigmoid graph
         
-        As can be seen in Figure \ref{sigmoidgraph}, the graph of the sigmoid function has two horizontal asymptotes: one at \(y = 1\) and one at \(y = 0\), which also fits conveniently with our training goals. No matter what value $x$ is, \(\sigma(Y)\) will always be between 1 and 0.
+        As can be seen in Figure \ref{sigmoidgraph}, the graph of the sigmoid function has two horizontal asymptotes: one at \(y = 1\) and one at \(y = 0\), which also fits conveniently with our training goals. No matter what value $z$ is, \(\sigma(Y)\) will always be between 1 and 0.
 
         \begin{figure}[h]
             \centering
@@ -161,13 +161,13 @@
 
     \subsection{Synaptic Weights \label{weights}}
         
-        A \textit{Synaptic Weight} is a ratio representing the strength of the connection between any two neurons \textcite{shamdasani2017}. As shown in Figure \ref{anndiagram}, every neuron in any given layer is connected to every single other neuron in its adjacent layers. When programmed, a set of synaptic weights is functionally identical to a layer of neurons- it is treated as a vector of values. The only major difference is that no activation or summation function is applied.
+        A \textit{Synaptic Weight} is a ratio representing the strength of the connection between any two neurons \textcite{shamdasani2017}. As shown in Figure \ref{anndiagram}, every neuron in any given layer is connected to every single other neuron in  the layer preceeding it. In terms of Computer Science, a set of synaptic weights is functionally identical to a layer of neurons- it is treated as a vector of floating point numbers. The only major difference is that no activation function is appliedto a synaptic weight.
 
-        The synaptic weights are the main driving force behind an artificial neural network algorithm. with each iteration of the building/training cycle, the synaptic weight is adjusted depending on the severity of the error of that cycle. The more 'incorrect' a synaptic weight is, the more it is adjusted in a given cycle. 
+        The synaptic weights are the main driving force behind an artificial neural network algorithm. With each iteration of the building/training cycle, the synaptic weight is adjusted depending on the severity of the error of that cycle. The more 'incorrect' a synaptic weight is, the more it is adjusted in a given cycle. 
 
     \subsection{Layers}
 
-        In section \ref{neuron}, I referred to a neuron being an element of an array. In the context of artificial neural networks, this array comes in the form of a \textit{layer} An artificial neural network is essentially a collection of neurons linked via synaptic weights. The neurons are organized into one of three different categories of neurons. These categories are in the form of layers. The categories are:
+        In section \ref{neuron}, I referred to a neuron being an element of an array. In the context of artificial neural networks, this array comes in the form of a \textit{layer}. An artificial neural network is essentially a collection of neurons linked via synaptic weights. The neurons are organized into one of three different categories of neurons. These categories are in the form of layers. These categories are:
 
         \begin{itemize}
             \item The input layer
@@ -175,7 +175,7 @@
             \item The output layer
         \end{itemize}
         
-        All neurons in all three layers are functionally identical- a neuron is simply a variable that holds a floating-point number between 0 and 1. The difference is in what they do: the neurons in the input layer are immutable as it they contain the values of the input, the intermediary hidden layer contains neurons whose values are constantly adjusting and rebalancing depending on the output of the algorithm and its squared-loss function, and the output layer simply contains the predicted output of a neural network after a training cycle
+        All neurons in all three layers are structurally identical- a neuron is simply a variable that holds a floating-point number between 0 and 1. The difference is in what they do: The neurons in the input layer are immutable as it they contain the values of the input, the intermediary hidden layer contains neurons whose values are constantly adjusting and rebalancing depending on the output of the algorithm and the application of gradient descent, and the output layer simply contains the predicted output of a neural network after a training cycle
 
         \subsubsection{A Note on Deep Learning}
             
@@ -185,13 +185,11 @@
                 \caption{A contrast between a simple neural network vs a deep learning neural network. Courtesy of \textcite{vazquez17}. \label{deeplearningfig}}
             \end{figure}
 
-            If you have kept up with Artificial Intelligence on the news over the last decade, you may have heard of \textit{Deep Learning} algorithms a number of years ago. Developed early this decade, Deep Learning is a relatively new field in Machine Learning where the hidden layer is many layers deep (hence the name), with the intent to emulate the neocortex of the human brain \textcite{Hof2013}.
+            If you have kept up with Artificial Intelligence on the news over the last decade, you may have heard of \textit{Deep Learning} algorithms a number of years ago. Having risen in popularity early this decade, Deep Learning is a relatively new field in Machine Learning where the hidden layer is many layers deep (hence the name), with the intent to emulate the neocortex of the human brain \textcite{Hof2013}. In other words, in a deep learning algorithm the hidden layer is a matrix of neurons, rather than a vector.
 
             One of the pitfalls of deep learning algorithms is that because there are so many neurons subdivided into many hidden intermediary layers that it's almost impossible for any human to grasp the effect of any one neuron (or even a collection of neurons) on the overall output of the neural network. More on that in Section \ref{backprop}.
 
-            Deep learning, along with \textit{Generated Adversarial Networls} is currently at the forefront of A.I. Research; It is currently used for all kinds of tasks, from image classification tasks to virtual assistants such as \textit{Google Now} and Amazon's \textit{Alexa}. \textcite{vazquez17}
-
-
+            Deep learning, along with \textit{Generated Adversarial Networls} is currently at the forefront of A.I. Research; It is currently used for all kinds of tasks, from image classification tasks to virtual assistants such as \textit{Google Now} and Amazon's \textit{Alexa}. \textcite{vazquez17}. The most complex deep learning algorithms can identify objects in an image almost as well as a human can.
  
     \subsection{Forward Propogation \label{foreprop}}
 
@@ -203,7 +201,7 @@
             For some tasks, it would be prudent to add some \textit{bias} variable \(b\) to the forward propogation function. This bias variable adds a bias to the algorithm by setting some minimum requirement for a neuron to activate, such that a neuron only activates of the weighted sum is greater than the bias. A bias variable can be added to a forward propogation functions as follows: 
             
             \begin{equation} \label{biasequation}
-                \sum_{i=1}^{n}(\vec Y_{l-1} \cdot  w_{ni}) -b
+                \sum_{i=1}^{n}(\vec Y_{l-1} \cdot  w_{ji}) -b
             \end{equation}
 
             As discussed before, each neuron is connected to every neuron from the previous layer, with each synapse's strength is weighted by some factor between 0 and 1. As described in equation \ref{biasequation} above, if a bias is to be added then each neuron would contain a single bias that would shift the activation function down by the size of the bias. 
@@ -211,7 +209,7 @@
 
     \subsection{Gradient Descent \label{gradient-descent}}
     
-        In order for a neural network to learn, some form of feedback algorithim must be integrated into the training process- some method for the neural network to understand how to adjust its neurons and synapses in order to improve its accuracy each training cycle.
+        In order for a neural network to learn, some form of feedback algorithim must be integrated into the training process - some method for the neural network to understand how to adjust its neurons and synapses in order to improve its accuracy each training cycle.
         
         As as stated in section \ref{ANN-definition}, the neurons and synapses are initialized randomly. Logically, you would conclude that the output of the neural network using the initial permutation of neuron and synapse values would lead to a meaningless output neuron. In the context of our experiment and objectives, our neural network could output anything from 0.999 to 0.453. Thus, it is crucial to figure out a method to somehow pare down the error each training cycle. 
 
@@ -221,7 +219,7 @@
             E(o , Y_o) = \sum (o - Y_o)^2
         \end{equation}
 
-        This is effective as larger discrepencies between the $Y_o$ and $o$ will lead to larger corrections to the synaptic weights of the algorithm and vice-versa. Typically, the formula would sum and take the average of all of the neurons in the output layer, however since in our experiment we only have one neuron the summation can be disregarded for this experiment.
+        This is effective as larger discrepencies between the $Y_o$ and $o$ will lead to larger corrections to the synaptic weights of the algorithm and vice-versa. Typically, the formula would sum and take the average of all of the neurons in the output layer, however since in our experiment we only have one neuron, the summation evaluates to $E(o , Y_o) = (o - Y_o)^2$, so it can be disregarded for this experiment.
 
         \begin{figure}[h]
             \centering
@@ -264,12 +262,12 @@
 
         Thus, by setting $\frac{\partial E}{\partial Y_o} = 0$ we can find the minima of $E(o, Y_o)$.
 
-        This technique is known as \textit{Gradient Descent}. By knowing in which directon to alter the synapses (or \textit{gradually descending} the plane of $E(o, Y_o)$), the neural network algorithm can improve its accuracy with each training cycle.
+        This technique is known as \textit{Gradient Descent}. By knowing in which directon to alter the synapses, the neural network algorithm can improve its accuracy with each training cycle.
 
     \subsection{Backpropogation \label{backprop}}
 
         % Insert text about brackprop
-        \textit{Backpropogation} is the submethod of the gradient descent algorithm, in which the weights and biases of a neural netowrk is actually adjusted. It is the step that delivers feedback into the neural network. While some may prefer the 'black box' approach to the hidden layer- in which the algorithms are applied to the neural network without worrying about the small details- it is worth covering as understanding how the neural network backpropogates grants the programmer an insight into the inner workings of the algorithm, despite not fully grasping how the network interprets the values of the neurons to arrive at its conclusion as stated in Section \ref{ANN-definition}. Note that this analysis is only applicable in simpler neural networks. The deeper the intemediary hidden layers are, the more opaque the neural network becomes to the programmer.
+        \textit{Backpropogation} is a submethod of the gradient descent algorithm, in which the weights and biases of a neural netowrk are actually adjusted. It is the step that delivers feedback into the neural network, and the process through which the neural network learns. While some may prefer the 'black box' approach to implementing the hidden layer- in which the algorithms are applied to the neural network without worrying about the small details- it is worth covering as understanding how the neural network backpropogates grants the programmer an insight into the inner workings of the algorithm, despite not fully grasping how the network interprets the values of the neurons to arrive at its conclusion as stated in Section \ref{ANN-definition}. Note that this analysis is only applicable in simpler neural networks. The deeper the intemediary hidden layers are, the more opaque the neural network becomes to the programmer.
 
         As stated in section \ref{weights}, The synaptic weights represent the strengths of the connections between some neuron $Y$ and every neuron in the preceeding layer. In other words, each $Y$ in some layer $l$ corresponds to some weight vector $\vec w$, whose components represent the strength of the link between $Y$ and every neuron in layer $l-1$.
 
@@ -372,6 +370,7 @@
 
         The result of all these calculations, and the result we are looking for, is the gradient vector of the function $E_0$, composed of the partial derivatives of $E_0$ with respect to $w_{jk}^{(L)}$ and of $E_0$ with respect to $b_j^{(L)}$. This is shown in Equation \ref{nablaE}.
 
+
         \begin{equation} \label{nablaE}
             -\eta \nabla E = \begin{bmatrix}
                 \frac{\partial E}{\partial w_{11}^{(1)}} \\\\
@@ -404,14 +403,24 @@
 
     \subsection{Numpy.py}
 
+        Numpy is a Python package most often used by data scientists, engineers, and mathematicians in favour of matlab. It has a unique advantage in that it is written in C with a python frontend, making it both fast and easy to use and read.
+
+        It also has a lot of mathematically complicated functions that we will need; such as matrix transposes, dot multiplication, as well as native vector and matrix data types designed to be used with the aforementioned functions.
+
     \subsection{Why Use a Vanilla Artificial Neural Network?
     }
 
-        As stated in Section \ref{methods}, I chose to use a simple artificial neural network algorithm with no added frills. While it is true that, theoretically, so long as I use the same algorithms to create the neural network the change in efficiency of an additional neuron would be consistent, I wanted to use the simplest possible artificial nerual network so as to emphasize and keep the focus on the objective of the experiment. 
+        As stated in Section \ref{methods}, I chose to use a simple artificial neural network algorithm with no added frills. While it is true that, theoretically, so long as I use the same algorithms to create the neural network the change in efficiency of an additional neuron would be consistent, I wanted to use the simplest possible artificial nerual network so as to emphasize and keep the focus on the objective of the experiment.
 
-        
-
+        I am also concerned that a different, more optimized set of algorithms might alter the results of the research experiment. A different error function, for instance, would completely change the formulas derived in Section \ref{backprop}. This may have an effect on how 
+    
     \subsection{Why Run So Few Training Cycles?}
+
+        Given a suffient number of training cycles, all artificial neural network algorithms have the potential to be highly accurate. As stated in Section \ref{objectives}, the aim of this experiment is to calculate and analyze the effect of a marginal node in the intermediary layer of the artificial neural network.
+
+        If the number of training cycles is high enough, then no matter the number of neurons the network will make very accurate predictions. In which case, the output of the neural network will be useless for the purposes of our experiment. 
+
+        At the same time, we have to be careful to not choose \textit{too} few training cycles, lest the neural network output seemingly arbitrary numbers. We'll have to just keep slowly increasing the number of training cycles - like one would tune the frequency of an FM radio- until we get workable data.
 
 \section{Research Results \label{results}}
 
