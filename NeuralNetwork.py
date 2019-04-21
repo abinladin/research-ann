@@ -14,6 +14,9 @@ class Neural_Network:
 
     def sigmoid(self, z):
         return 1 / (1 + np.exp(-z))
+        
+    def d_sigmoid(self, z):
+        return z * (1 - z)
 
     def feed_forward(self, inputs):
         self.z_L_minus_one = np.dot(inputs, self.weights_input_to_hidden)
@@ -23,6 +26,21 @@ class Neural_Network:
         self.a_L_one = self.sigmoid(self.z_L_one)
 
         return self.a_L_one
+    
+    def backpropogate(self, X, y, o):
+        self.o_error = y - o
+        self.o_delta = self.o_error * self.d_sigmoid(o)
+
+        self.z2_error = self.o_delta.dot(self.weights_hidden_to_output.T)
+        self.z2_delta = self.z2_error * self.d_sigmoid(self.a_L_minus_one)
+
+        self.weights_input_to_hidden += X.T.dot(self.z2_delta)
+        self.weights_hidden_to_output += self.z2.T.dot(self.o_delta)
+    
+    def train(self, X, y):
+        o = self.feed_forward
+        self.backpropogate(X, y, o)
+        
 
 # Training data
 XOR_gate_inputs = np.array( ([0, 0], [0, 1], [1, 0], [1, 1]), dtype=float)
