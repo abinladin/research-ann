@@ -11,6 +11,8 @@
 
 \usepackage{graphicx}
 
+\usepackage{listings}
+
 \usepackage[backend=biber, style=authoryear]{biblatex}
 \addbibresource{bibliography.bib}
 
@@ -91,7 +93,9 @@
             \item The more certain the neural network is that the output should be 0, the closer the output neruon will be to 0
         \end{itemize}
     
-        The research experiment will be run in a Python 3.7.3 script as Python is both easy to read and is the industry standard for A.I. development. The simple neural network can be modeled as described in Figure \ref{anndiagram}. The arrows represent the synaptic weights between nodes; \begin{math}n\end{math} indicates the real coordinate space the intermediate vector lies in. 
+        The research experiment will be run in a Python 3.7.3 script as Python is both easy to read and is the industry standard for A.I. development. The simple neural network can be modeled as described in Figure \ref{anndiagram}. The arrows represent the synaptic weights between nodes; \begin{math}n\end{math} indicates the real coordinate space the intermediate vector lies in.
+
+        The python algorithm for building the artificial neural network can be found in \ref{neuralnetpy}. Upon attempting the experiment I quickly realized that the neural network generated too much data to organize by hand, so I wrote DataCollector.py (Section \ref{datacollectorpy})to store and organize the results of the experiment.
         
         Each layer is written as an array of neurons, and each neuron has a coressponding array of synaptic weights. Python does not natively support arrays; instead, it utilizes (Linked) Lists as its main method for aggregating data. Instead, I will be using the numpy Python package.
 
@@ -407,8 +411,7 @@
 
         It also has a lot of mathematically complicated functions that we will need; such as matrix transposes, dot multiplication, as well as native vector and matrix data types designed to be used with the aforementioned functions.
 
-    \subsection{Why Use a Vanilla Artificial Neural Network?
-    }
+    \subsection{Why Use a Vanilla Artificial Neural Network?}
 
         As stated in Section \ref{methods}, I chose to use a simple artificial neural network algorithm with no added frills. While it is true that, theoretically, so long as I use the same algorithms to create the neural network the change in efficiency of an additional neuron would be consistent, I wanted to use the simplest possible artificial nerual network so as to emphasize and keep the focus on the objective of the experiment.
 
@@ -428,7 +431,9 @@
 
 \section{Appendix}
 
-    \subsection{NeuralNetwork.py}
+    \subsection{NeuralNetwork.py \label{neuralnetpy}}
+
+    \subsection{DataCollector.py\label{datacollectorpy}}
 
 \section{References}
 
