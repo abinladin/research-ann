@@ -35,19 +35,25 @@ class Neural_Network:
         self.z2_delta = self.z2_error * self.d_sigmoid(self.a_L_minus_one)
 
         self.weights_input_to_hidden += X.T.dot(self.z2_delta)
-        self.weights_hidden_to_output += self.z2.T.dot(self.o_delta)
+        self.weights_hidden_to_output += self.a_L_minus_one.T.dot(self.o_delta)
     
     def train(self, X, y):
-        o = self.feed_forward
+        o = self.feed_forward(X)
         self.backpropogate(X, y, o)
-        
+
+    def predict(self):
+        print("Predicted data based on weights:")
+        print("Input: \n" + str(XOR_gate_inputs))
+        print("output: \n" + str(self.feed_forward(XOR_gate_inputs)))
 
 # Training data
 XOR_gate_inputs = np.array( ([0, 0], [0, 1], [1, 0], [1, 1]), dtype=float)
 XOR_gate_outputs = np.array( ([0], [1], [1], [0]), dtype=float)
 
-neural_network = Neural_Network(1)
+neural_network = Neural_Network(20)
 neural_network_output = neural_network.feed_forward(XOR_gate_inputs)
 
-print("Predicted output:\n" + str(XOR_gate_outputs))
-print("Actual output:\n" + str(neural_network_output))
+for i in range(500):
+    neural_network.train(XOR_gate_inputs, XOR_gate_outputs)
+
+neural_network.predict()
