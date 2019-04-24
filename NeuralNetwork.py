@@ -27,15 +27,14 @@ class Neural_Network:
 
         return self.a_L_one
     
-    # TODO: refactor this shit so that it makes a modicrum of sense
-    def backpropogate(self, X, expected_output, predicted_output):
+    def backpropogate(self, inputs, expected_output, predicted_output):
         self.output_error = (expected_output - predicted_output)
         self.output_error_delta = self.output_error * self.d_sigmoid(predicted_output)
 
         self.weights_error = self.output_error_delta.dot(self.weights_hidden_to_output.T)
         self.weights_error_delta = self.weights_error * self.d_sigmoid(self.a_L_minus_one)
 
-        self.weights_input_to_hidden += X.T.dot(self.weights_error_delta)
+        self.weights_input_to_hidden += inputs.T.dot(self.weights_error_delta)
         self.weights_hidden_to_output += self.a_L_minus_one.T.dot(self.output_error_delta)
     
     def train(self, inputs, expected_output):
