@@ -365,7 +365,7 @@ Therefore to calculate the effect any individual synaptic weight $w$ has on the 
     \frac{\partial E_0}{\partial w_{jk}^{(L)}} = 2 (a_j^{(L)} - o) \sigma '(z_j^{(L)}) a_k^{(L-1)}
 \end{equation}
 
-You may have noticed that $\frac{\partial E_0}{\partial a_j^{(L)}}$ is similar to Equation \ref{loss-equation-derivative}. This is because they are, variable names aside, the exact same function.
+You may have noticed that $\frac{\partial E_0}{\partial a_j^{(L)}}$ is similar to Equation \ref{loss-equation-derivative}. This is because the two functions are, variable names aside, the exact same.
 
 Another way of approaching this problem would be to consider that the change in any individual weight $w$ has a very small effect on the overall change in the overall error $E_0$. Or, in other words:
 
@@ -387,7 +387,7 @@ The only new equation this differential results in is $\frac{\partial z_j^{(L)}}
 
 \[\frac{\partial z_j^{(L)}}{\partial b_j^{(L)}} = 1 \]
 
-This is very convenient, because is the rate of change of $\frac{\partial z_j^{(L)}}{\partial b_j^{(L)}}$ a constant 1. Which implies that the rate of change of the error $E_0$ with respect to the bias is directly proportional to the output of some infinitismal error produced by the neural network. The function $E_0$ is simply $\sigma(z)$, so the rate of change of b doeas not change relative to $z$. This is illustrated in Equation \ref{general-delta-dEB}.
+This is very convenient, because the rate of change of $\frac{\partial z_j^{(L)}}{\partial b_j^{(L)}}$ is a constant 1. Which implies that the rate of change of the error $E_0$ with respect to the bias is directly proportional to the output of some infinitismal error produced by the neural network. The function $E_0$ is simply $\sigma(z)$, so the rate of change of $b$ doeas not change relative to $z$. This is illustrated in Equation \ref{general-delta-dEB}.
 
 \[ \frac{\partial E_0}{\partial b_j^{(L)}} = \delta_j^{(L)}\]
 
@@ -402,7 +402,7 @@ There's a small catch, however; bear in mind that a change in some neuron in lay
 
 \[ \frac{\partial E_0}{\partial a_k^{(L-1)}} = \sum_{j=0}^{n_L-1} \frac{\partial E_0}{\partial a_j^{(L)}}  \frac{\partial a_j^{(L)}}{\partial z_j^{(L)}} \frac{\partial z_j^{(L)}}{\partial a_k^{(L-1)}} \]
 
-The result of all these calculations, and the result we are looking for, is the gradient vector of the function $E_0$, composed of the partial derivatives of $E_0$ with respect to $w_{jk}^{(L)}$ and of $E_0$ with respect to $b_j^{(L)}$. This is shown in Equation \ref{nablaE}.
+The result of all these calculations, and the result we are looking for, is the gradient vector of the function $E_0$, composed of the partial derivatives of $E_0$ with respect to $w_{jk}^{(L)}$ and of $E_0$ with respect to $b_j^{(L)}$. This is shown in Equation \ref{nablaE}. You can think of it as a vector that 'points' towards the direction the neural network needs to adjust towards.
 
 
 \begin{equation} \label{nablaE}
@@ -419,7 +419,9 @@ The result of all these calculations, and the result we are looking for, is the 
 
 Admittedly, a pure gradient descent algorithm is rarely used in practical applications of artificial neural networks. More commonly, a slightly different method called \textit{Stochastic Gradient Descent} is used.
 
-A gradient descent algorithm as defined above, where each training sample data is passed through every single neuron and synapse is computationally expensive. Very computationally expensive. So instead an SGD algorithm feeds the training data to the neural network in mini-batches, which is initially less accurate but far less computationally expensive.
+A gradient descent algorithm as defined above, where each training sample data is passed through every single neuron and synapse is computationally expensive. Very computationally expensive. So instead a stochastic gradient descent algorithm implemets backpropogation in mini-batches of training data, which is initially less accurate but far less computationally expensive.
+
+I will not be using any form of stochastic gradient descent as I am using the simplest form of an artifical neural network, and predicting the output of an XOR gate is far too simple to of a task to be able to implement stochastic gradient descent anyway.
 
 \section{Research Methodology \label{methodology}}
 
