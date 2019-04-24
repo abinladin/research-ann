@@ -27,25 +27,17 @@ class Neural_Network:
 
         return self.a_L_one
     
-    def backpropogate(self, X, y, o):
-        self.o_error = (y - o)
-        self.o_delta = self.o_error * self.d_sigmoid(o)
+    # TODO: refactor this shit so that it makes a modicrum of sense
+    def backpropogate(self, X, expected_output, predicted_output):
+        self.output_error = (expected_output - predicted_output)
+        self.output_error_delta = self.output_error * self.d_sigmoid(predicted_output)
 
-        self.z2_error = self.o_delta.dot(self.weights_hidden_to_output.T)
-        self.z2_delta = self.z2_error * self.d_sigmoid(self.a_L_minus_one)
+        self.weights_error = self.output_error_delta.dot(self.weights_hidden_to_output.T)
+        self.weights_error_delta = self.weights_error * self.d_sigmoid(self.a_L_minus_one)
 
-        self.weights_input_to_hidden += X.T.dot(self.z2_delta)
-        self.weights_hidden_to_output += self.a_L_minus_one.T.dot(self.o_delta)
+        self.weights_input_to_hidden += X.T.dot(self.weights_error_delta)
+        self.weights_hidden_to_output += self.a_L_minus_one.T.dot(self.output_error_delta)
     
-    def train(self, X, y):
-        o = self.feed_forward(X)
-        self.backpropogate(X, y, o)
-
-    def predict(self):
-        print("Predicted data based on weights:")
-        print("Input: \n" + str(XOR_gate_inputs))
-        print("predicted output: \n" + str(self.feed_forward(XOR_gate_inputs)))
-
-# Training data
-XOR_gate_inputs = np.array( ([0, 0], [0, 1], [1, 0], [1, 1]), dtype=float)
-XOR_gate_outputs = np.array( ([0], [1], [1], [0]), dtype=float)
+    def train(self, inputs, expected_output):
+        predicted_output = self.feed_forward(expected_output)
+        self.backpropogate(inputs, expected_output, predicted_output)
