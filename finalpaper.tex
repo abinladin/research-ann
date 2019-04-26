@@ -470,14 +470,14 @@ We can derive a formula to calculate the predicted efficiency of the artificial 
     \eta(Y, t) =  \frac{Y^{(L)}}{t}
 \end{equation}
 
-The partial derivatives of Equation \ref{efficiency-equation} with respect to $Y$ and $t$ are described in Equations \ref{efficiency-equation-n} and \ref{efficiency-equation-t}. They show that for any value t, $\frac{\partial \eta(Y, t)}{\partial n}$ is more sensitive to change than $\frac{\partial \eta(Y, t)}{\partial t}$. We know this because for all $t$ such that $t > 1$, $\frac{1}{t^2}$ is smaller than $\frac{1}{t}$. Therefore no matter what variables are adjusted, increasing the number of neurons is exponentially more efficient than increasing the number of training cycles.
+The partial derivatives of Equation \ref{efficiency-equation} with respect to $Y$ and $t$ are described in Equations \ref{efficiency-equation-n} and \ref{efficiency-equation-t}. They show that for any value t, $\frac{\partial \eta(Y, t)}{\partial Y}$ is more sensitive to change than $\frac{\partial \eta(Y, t)}{\partial t}$. We know this because for all $t$ such that $t > 1$, $\frac{1}{t^2}$ is smaller than $\frac{1}{t}$. Therefore no matter what variables are adjusted, increasing the number of neurons is exponentially more efficient than increasing the number of training cycles.
 
 \begin{equation} \label{efficiency-equation-n}
     \frac{\partial \eta(Y, t)}{\partial Y} = \frac{1}{t}
 \end{equation}
 
 \begin{equation} \label{efficiency-equation-t}
-    \frac{\partial \eta(Y, t)}{\partial t} = -\frac{n}{t^2}
+    \frac{\partial \eta(Y, t)}{\partial t} = -\frac{Y}{t^2}
 \end{equation}
 
 \section{Research Results \label{results}}
@@ -752,7 +752,7 @@ The figures in this section are a graphical representation of the output of Data
 % God I just want to be done with this thing already
 \subsection{Conclusions \label{conclusions}}
 
-As can be seen in figures \ref{case-1-graph}, \ref{case-2-graph}, and \ref{case-4-graph}, at $n = 1$ the neural network produces complete gibberish. It never varies much beyond $Y \approx 0.5$. There is a sharp increase in certainty at $n = 2$ - interestingly, this is also the number of neurons in the input layer. This is not the case in Figure \ref{case-1-graph}, which in two out of three attempts sees a \textit{decrease} in efficiency going from $n = 1$ to $n = 2$. Case 1 is unique in that all input neurons have a value of 0. This may mean that in terms of Big-O Efficiency Notation, Case 1 is the worst possible case. This unique inconsistency in Figure \ref{case-1-graph} may also suggest that the output of the neural network at $n = 2$ is also arbitrary as in the case of $n = 1$, because the input layer in Case 1 is $[0, 0]$ - so the algorithm can't immediately correct itself, since any value $x$ multiplied by $0$ is equal to 0. In all other cases save for Case 3 (which will be explained in more detail further down this section), All neural networks experience a ubiquitous sharp increase in efficiency - indeed, the network only starts to make accurate predictions then - at $n = 2$.
+As can be seen in figures \ref{case-1-graph}, \ref{case-2-graph}, and \ref{case-4-graph}, at $n = 1$ (such that $n$ is the number of neurons) the neural network produces complete gibberish. It never varies much beyond $Y \approx 0.5$. There is a sharp increase in certainty at $n = 2$ - interestingly, this is also the number of neurons in the input layer. This is not the case in Figure \ref{case-1-graph}, which in two out of three attempts sees a \textit{decrease} in efficiency going from $n = 1$ to $n = 2$. Case 1 is unique in that all input neurons have a value of 0. This may mean that in terms of Big-O Efficiency Notation, Case 1 is the worst possible case. This unique inconsistency in Figure \ref{case-1-graph} may also suggest that the output of the neural network at $n = 2$ is also arbitrary as in the case of $n = 1$, because the input layer in Case 1 is $[0, 0]$ - so the algorithm can't immediately correct itself, since any value $x$ multiplied by $0$ is equal to 0. In all other cases save for Case 3 (which will be explained in more detail further down this section), All neural networks experience a ubiquitous sharp increase in efficiency - indeed, the network only starts to make accurate predictions then - at $n = 2$.
 
 This is likely because the input layer is also two neurons long. At $n = 2$, the number of synaptic weights between the input layer and the intermediary layer is 4 - the same number of the set of possible input/output pairs of an XOR gate. Thus, we can conclude that at $n = 2$, each synaptic link between neurons represents the likelihood of output given a certain set of inputs. This is the minimum number of synaptic weights required for the artificial neural network to function. At $n > 2$, the number of synaptic weights increases exponentially, allowing for more subtle decision-making. This means that the neural network can make more accurate predictions each training cycle.
 
