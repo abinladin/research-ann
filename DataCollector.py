@@ -27,7 +27,6 @@ class DataCollector:
         for number_of_neurons in range(0, MAX_NUMBER_OF_NEURONS - 1):
             print("\t\tNumber of Neurons: ", number_of_neurons + 1)
             for cycle in range(1, NUMBER_OF_TRAINING_CYCLES):
-                #print("\t\t\tTraining cycle no. ", cycle)
                 self.network_array[number_of_neurons].train(XOR_gate_inputs, XOR_gate_outputs)
             self.case[case_number, attempt_number] = self.network_array[number_of_neurons].feed_forward(XOR_gate_inputs)[case_number]
             print("\t\t Final Value: ",self.case[case_number, attempt_number])
